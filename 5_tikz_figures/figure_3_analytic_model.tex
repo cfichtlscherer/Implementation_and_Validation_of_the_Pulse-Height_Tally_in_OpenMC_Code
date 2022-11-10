@@ -1,0 +1,46 @@
+\begin{tikzpicture}[scale=1]
+
+  \node[cylinder, draw=black, thick, aspect=1.0,
+  minimum height=2cm, 
+  minimum width=3cm, 
+  shape border rotate=0, 
+  cylinder uses custom fill, cylinder body fill=black!30, cylinder end fill=black!10] at (-1,0,0)(A) {};
+
+  \node[cylinder, draw=black, thick, aspect=1.0,
+  minimum height=2cm, 
+  minimum width=3cm, 
+  shape border rotate=0, 
+  cylinder uses custom fill, cylinder body fill=black!60, cylinder end fill=black!10] at (0.75,0,0)(B) {};
+
+\draw[dashed]
+    let \p1 = ($ (A.after bottom) - (A.before bottom) $),
+        \n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
+        \p2 = ($ (A.bottom) - (A.after bottom)!.5!(A.before bottom) $),
+        \n2 = {veclen(\x2,\y2)-\pgflinewidth}
+  in
+    ([xshift=-\pgflinewidth] A.before bottom) arc [start angle=270, delta angle=180,
+    x radius=\n2, y radius=\n1];
+    
+    
+\draw[dashed]
+    let \p1 = ($ (B.after bottom) - (B.before bottom) $),
+        \n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
+        \p2 = ($ (B.bottom) - (B.after bottom)!.5!(B.before bottom) $),
+        \n2 = {veclen(\x2,\y2)-\pgflinewidth}
+  in
+    ([xshift=-\pgflinewidth] A.before bottom) arc [start angle=270, delta angle=180,
+    x radius=\n2, y radius=\n1];
+    
+
+    
+ % particle    
+    \fill[black] (-5, 0) circle (0.1cm);
+    \draw[->, dashed, line width=0.1mm] (-5,0) -- (-2.5, 0); 
+    
+    \node[] at (-3.8, 0.3) {$E_\gamma = 3.2\,\mathrm{MeV}$};
+    
+ % sizes of cylinder    
+    \draw[decoration={brace, mirror, raise=5pt},decorate]  (-1.8, -1.7) -- node[below=3mm] {$L= L_1 + L_2 = 2 \ln(2) \, \mathrm{cm}$} (1.8, -1.7);
+    \draw[decoration={brace, raise=5pt},decorate]  (2.0, 0) -- node[right=3mm] {$R=\ln(2) \, \mathrm{cm}$} (2.0, -1.5);
+    
+\end{tikzpicture}

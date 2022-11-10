@@ -1,0 +1,13 @@
+energy = 660keV
+number particle = 10**6
+
+Geant4						OpenMC
+242.52828431129456 (compile 8 cores)		
+245.60579538345337 (compile 8 cores)
+272.9489514827728  (compile 1 core)
+254.72168850898743 (compile 1 core)
+134.55000019073486 (mit Strom?)			41.92030739784241
+144.86659908294678 (mit Strom?)			41.63700604438782
+286.2827661037445  (ohne Strom) 
+107,32s		   (ohne kompilieren)
+105,58s		   (ohne kompilieren)

@@ -1,0 +1,7 @@
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/install/strip.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/install/local.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/install.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/list_install_components.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/rebuild_cache.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/edit_cache.dir
+/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir

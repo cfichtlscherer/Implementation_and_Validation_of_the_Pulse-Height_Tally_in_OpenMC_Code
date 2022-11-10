@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<geometry>
+  <cell id="1" material="2" name="crystal" region="-1 -7 6" universe="1" />
+  <cell id="2" material="3" region="1 -2 -7 5" universe="1" />
+  <cell id="3" material="3" region="-2 -6 5" universe="1" />
+  <cell id="4" material="1" region="2 -3 -7 5" universe="1" />
+  <cell id="5" material="1" region="-3 -5 4" universe="1" />
+  <cell id="6" material="4" region="-3 -9 7" universe="1" />
+  <cell id="7" material="5" region="-10 ~(-3 -9 4)" universe="1" />
+  <surface coeffs="0.0 0.0 3.81" id="1" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 3.86" id="2" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 3.91" id="3" type="z-cylinder" />
+  <surface coeffs="0.0" id="4" type="z-plane" />
+  <surface coeffs="0.05" id="5" type="z-plane" />
+  <surface coeffs="0.1" id="6" type="z-plane" />
+  <surface coeffs="7.72" id="7" type="z-plane" />
+  <surface coeffs="8.0" id="9" type="z-plane" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 25" id="10" type="sphere" />
+</geometry>
