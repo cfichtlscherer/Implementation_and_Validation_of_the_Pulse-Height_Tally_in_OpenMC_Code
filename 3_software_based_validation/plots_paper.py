@@ -155,11 +155,11 @@ def generate_ks_test_plot():
     #plt.text(260, 0.031, "$d_{0.05} = 0.03$")
     plt.text(4, 0.0315, "$d_{0.05} = 0.03$")
 
-    plt.plot(viewed_range, ks_test_results[cutted_beginning:], marker="o", ls="", color=colors[0], alpha=0.3, label="Original test results")
+    plt.plot(viewed_range, ks_test_results[cutted_beginning:], marker=".", ls="", color=colors[0], alpha=0.3, label="Original test results")
 #    plt.plot(viewed_range, ks_tests_cleaned[cutted_beginning:], color=colors[0], label="Energy shift of problematic bins")
-    plt.plot(viewed_range, ks_tests_cleaned[cutted_beginning:], color=colors[0], label="Test results of shifted bins")
+    plt.plot(viewed_range, ks_tests_cleaned[cutted_beginning:], marker=".", ls="", color=colors[0], label="Test results of shifted bins")
     
-    plt.plot(problem_indices, ks_test_results_problems, marker="x", ls="", color=colors[0], alpha=0.3)
+    plt.plot(problem_indices, ks_test_results_problems, marker="s", ls="", color=colors[0], alpha=0.3)
     # plt.plot(problem_indices, [ks_test_results[i] for i in problem_indices], marker="x", ls="", color=colors[0])
     
     #plt.axis([0, 300, -0.002, 0.05])     #  plt.axis([xmin,xmax,ymin,ymax])
