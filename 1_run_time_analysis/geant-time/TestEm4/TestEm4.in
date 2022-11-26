@@ -7,6 +7,6 @@
 /control/cout/ignoreThreadsExcept 0
 /run/verbose 2
 #
-/run/printProgress 1000
+/run/printProgress 1000000
 #
 /run/beamOn 1000000

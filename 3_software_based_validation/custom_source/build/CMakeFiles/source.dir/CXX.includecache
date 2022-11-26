@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/disc_source.cpp
+cmath
+-
+memory
+-
+unordered_map
+-
+openmc/random_lcg.h
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/openmc/random_lcg.h
+openmc/source.h
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/openmc/source.h
+openmc/particle.h
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/openmc/particle.h
+

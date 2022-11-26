@@ -1,0 +1,3 @@
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/build/CMakeFiles/rebuild_cache.dir
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/build/CMakeFiles/edit_cache.dir
+/home/cpf/Desktop/pht-mcnp-openmc-12032022/custom_source/build/CMakeFiles/source.dir

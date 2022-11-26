@@ -1,32 +1,23 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/TestEm4.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/TestEm4.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/ActionInitialization.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/ActionInitialization.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/DetectorConstruction.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/DetectorConstruction.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/EventAction.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/EventAction.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/PhysListEmStandard.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/PhysListEmStandard.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/PhysicsList.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/PhysicsList.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/PrimaryGeneratorAction.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/PrimaryGeneratorAction.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/RunAction.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/RunAction.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/SteppingAction.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/SteppingAction.cc.o"
-  "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/src/SteppingVerbose.cc" "/home/cpf/Desktop/geant_compton_edge-02122021-time/TestEm4/build/CMakeFiles/TestEm4.dir/src/SteppingVerbose.cc.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "G4LIB_BUILD_DLL"
-  "G4UI_USE_TCSH"
   )
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../include"
-  "/home/cpf/geant/geant4.10.07.p02-install/include/Geant4"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/TestEm4.cc" "CMakeFiles/TestEm4.dir/TestEm4.cc.o" "gcc" "CMakeFiles/TestEm4.dir/TestEm4.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/ActionInitialization.cc" "CMakeFiles/TestEm4.dir/src/ActionInitialization.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/ActionInitialization.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/DetectorConstruction.cc" "CMakeFiles/TestEm4.dir/src/DetectorConstruction.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/DetectorConstruction.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/EventAction.cc" "CMakeFiles/TestEm4.dir/src/EventAction.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/EventAction.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/PhysListEmStandard.cc" "CMakeFiles/TestEm4.dir/src/PhysListEmStandard.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/PhysListEmStandard.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/PhysicsList.cc" "CMakeFiles/TestEm4.dir/src/PhysicsList.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/PhysicsList.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/PrimaryGeneratorAction.cc" "CMakeFiles/TestEm4.dir/src/PrimaryGeneratorAction.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/PrimaryGeneratorAction.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/RunAction.cc" "CMakeFiles/TestEm4.dir/src/RunAction.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/RunAction.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/SteppingAction.cc" "CMakeFiles/TestEm4.dir/src/SteppingAction.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/SteppingAction.cc.o.d"
+  "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4/src/SteppingVerbose.cc" "CMakeFiles/TestEm4.dir/src/SteppingVerbose.cc.o" "gcc" "CMakeFiles/TestEm4.dir/src/SteppingVerbose.cc.o.d"
   )
 
 # Targets to which this target links.

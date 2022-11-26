@@ -1,20 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <settings>
   <run_mode>fixed source</run_mode>
-  <particles>1000000</particles>
+  <particles>10000000</particles>
   <batches>1</batches>
-  <source particle="photon" strength="1.0">
-    <space origin="0 0 -1" type="cylindrical">
-      <r parameters="0 0.01" type="uniform" />
-      <phi parameters="0.0 6.283185307179586" type="uniform" />
-      <z parameters="-1 -1" type="uniform" />
-    </space>
-    <angle reference_uvw="0.0 0.0 1.0" type="monodirectional" />
-    <energy type="discrete">
-      <parameters>660000.0 1.0</parameters>
-    </energy>
-  </source>
+  <source library="custom_source/build/libsource.so" parameters="radius=2.84,energy=661700.0" strength="1.0" />
   <photon_transport>true</photon_transport>
-  <seed>1</seed>
-  <temperature_method>interpolation</temperature_method>
 </settings>

@@ -56,7 +56,6 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4ParticleDefinition* particle
            = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
   fParticleGun->SetParticleDefinition(particle);
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));         //CPF monodirectional particles
   fParticleGun->SetParticleEnergy(0.662*MeV);                              //CPF
 
