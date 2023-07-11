@@ -18,7 +18,8 @@ input("-> source activated?")
 
 times = []
 
-for i in range(100):
+#for i in range(100):
+for i in range(1):
 
     t0 = time.time()
 
@@ -26,7 +27,7 @@ for i in range(100):
     print("-> build dir deleted")
     os.system("mkdir build")
     print("-> build dir generated")
-    os.system("cd build && cmake -DGeant4_DIR=/home/cpf/geant/geant4.10.06-install/lib/Geant4-10.6.3 " +
+    os.system("cd build && cmake -DGeant4_DIR=/home/cpf/Codes/geant4-v11.1.0-install/lib/Geant4-11.1.2 " +
             "/home/cpf/Desktop/Implementation_and_Validation_of_the_Pulse-Height_Tally_in_OpenMC_Code/1_run_time_analysis/geant-time/TestEm4")
     print("-> cmake command")
     os.system("cd build && make -j1")

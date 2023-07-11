@@ -90,8 +90,13 @@ def run_openmc(parameter_dic):
     settings.photon_transport = True
 
     source = openmc.Source()
-    source.library = 'custom_source/build/libsource.so' 
-    source.parameters = "radius=" + str(2.84) + ',energy=' + str(parameter_dic["energy"]) 
+    r = openmc.stats.PowerLaw(0.0, parameter_dic["radius"], 1)
+    phi = openmc.stats.Uniform(0., 2*np.pi)
+    z = openmc.stats.Uniform(0.0, 0.0)
+    source.particle = 'photon'
+    source.space = openmc.stats.CylindricalIndependent(r=r, phi=phi, z=z, origin=(0.0, 0.0, -1))
+    source.energy = openmc.stats.Discrete([parameter_dic["energy"]], [1.0])
+    source.angle = openmc.stats.Monodirectional([0,0,1])
     settings.source = source
 
     settings.run_mode = 'fixed source'
@@ -110,7 +115,7 @@ def run_openmc(parameter_dic):
     tallies.append(tally)
     tallies.export_to_xml()
 
-    openmc.run(openmc_exec='/home/cpf/openmc/build/bin/openmc')
+    openmc.run(openmc_exec='/home/cpf/Desktop/openmc/build/bin/openmc')
 
     sp = openmc.StatePoint('statepoint.1.h5')
     tally = sp.get_tally(name="pht tally")

@@ -46,7 +46,7 @@ def get_mcnp_error(run):
 def generate_spectra_sub_plot_after_three():
 
     mcnp_spectrum = extract_spectrum_mcnp("run-42/outp")[4:-1]
-    openmc_spectrum = np.load("run-27/openmc_results.npy")[3:-1]
+    openmc_spectrum = np.load("run-27-cluster/openmc_results.npy")[3:-1]
 
     std = get_mcnp_error("run-27")[4:-1]
 
@@ -125,11 +125,13 @@ def generate_spectra_sub_plot_after_three():
     print("in 1 std: ", sum((abs(relative_error) < 1*std).astype(int)) / len(std) )
     print("in 2 std: ", sum((abs(relative_error) < 2*std).astype(int)) / len(std) )
     print("in 3 std: ", sum((abs(relative_error) < 3*std).astype(int)) / len(std) )
+    
+    print("relative error full energy peak: ", relative_error[-1])
 
     for ax in axs:
         ax.label_outer()
 
-    plt.savefig("/home/cpf/Desktop/publications-in-work/Implementation-and-Validation-of-the-Pulse-Height-Tally-in-OpenMC/figures/cs_137.pgf", bbox_inches = 'tight')
+    plt.savefig("cs_137.pgf", bbox_inches = 'tight')
 
 
 def generate_ks_test_plot():
@@ -139,11 +141,9 @@ def generate_ks_test_plot():
     plt.ylabel("Kolmogorov-Smirnov Test Statistic")
 
     problem_indices = [145, 169, 193, 241, 268, 284]
-    ks_test_results = np.load("run-43/all_ks_test_results.npy")
+    ks_test_results = np.asarray([0,0,0,0] + list(np.load("run-43/all_ks_test_results.npy")))
     ks_test_results_problems = [ks_test_results[i-1] for i in problem_indices]
-    print(ks_test_results_problems)
     ks_test_results_new = np.load("run-44/all_ks_test_results.npy")
-    print(ks_test_results_new)
     ks_tests_cleaned = ks_test_results.copy()
     for index, value in enumerate(problem_indices):
         ks_tests_cleaned[value - 1] = ks_test_results_new[index] 
@@ -154,32 +154,23 @@ def generate_ks_test_plot():
     plt.plot(range(301), 301 * [0.03], color=colors[2], ls="--", marker="")
     #plt.text(260, 0.031, "$d_{0.05} = 0.03$")
     plt.text(4, 0.0315, "$d_{0.05} = 0.03$")
-
     plt.plot(problem_indices, ks_test_results_problems, marker="x", ls="", color=colors[1], alpha=1.0, label="Original test results")
     plt.plot(problem_indices, ks_test_results[problem_indices], marker="x", ls="", color=colors[0], alpha=1.0, label="Shifted test results")
-
     plt.plot(viewed_range, ks_test_results[cutted_beginning:], color=colors[1], ls="")
-#    plt.plot(viewed_range, ks_tests_cleaned[cutted_beginning:], color=colors[0], label="Energy shift of problematic bins")
     plt.plot(viewed_range, ks_tests_cleaned[cutted_beginning:], color=colors[0], label="Used test results")
     
-
-    # plt.plot(problem_indices, [ks_test_results[i] for i in problem_indices], marker="x", ls="", color=colors[0])
-    
-    #plt.axis([0, 300, -0.002, 0.05])     #  plt.axis([xmin,xmax,ymin,ymax])
-
     plt.plot(66 - cutted_beginning, np.load("run-43/all_ks_test_results.npy")[65 - cutted_beginning], marker=".", color="black")
 
     plt.grid()
     plt.legend()
     plt.xticks([0, 50, 100, 150, 200, 250, 300], ["0.0", "0.5", "1.0", "1.5", "2.0", "2.5", "3.0"])
     plt.xlim(0,300)
-    #plt.ylim(0,0.22)
 
 
     plt.text(50, 0.015, "Cs-137 spectrum")
     plt.plot([62.5, 68], [0.0015, 0.014], color="black", marker="", lw=0.5)
 
-    plt.savefig("/home/cpf/Desktop/publications-in-work/Implementation-and-Validation-of-the-Pulse-Height-Tally-in-OpenMC/figures/ks_tests.pgf", bbox_inches = 'tight')
+    plt.savefig("ks_tests.pgf", bbox_inches = 'tight')
 
 
 #generate_spectra_sub_plot_after_three()

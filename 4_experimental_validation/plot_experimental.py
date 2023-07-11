@@ -27,7 +27,6 @@ matplotlib.rcParams.update({
     'pgf.rcfonts': False,
 })
 
-figures_path = '/home/cpf/Desktop/publications-in-work/Implementation-and-Validation-of-the-Pulse-Height-Tally-in-OpenMC/figures/'
 
 def generate_histogram(file_path, number_bins):
     """ generates the histogram from the from the pht tally produced .txt file"""
@@ -56,9 +55,9 @@ hspace = 0.4   # the amount of height reserved for white space between subplots
 plt.subplots_adjust(left, bottom, right, top, wspace, hspace)
 
 
-loadpath = "/home/cpf/Desktop/open_projects/f8_validation/experimental_validation_f8/experimental_openmc_calculation-2-01042022/experimental_broadened_spectra/"
-energy_path = "/home/cpf/Desktop/open_projects/f8_validation/experimental_validation_f8/experimental_openmc_calculation/"
-
+loadpath = "experimental_broadened_spectra/"
+energy_path = "isotope_emissions/energies/"
+intensity_path = "isotope_emissions/intensities/"
 nuc_names = ["Na-24", "Al-28", "S-37", "Co-60", "Zn-65", "Y-88", "Cs-137", "Ce-139", "Au-198"]
 
 #particles_simulation = 10 * 10**7 *0.038
@@ -79,7 +78,7 @@ energies = np.load(energy_path + "Rb-86-energies.npy")
 for en in energies:
     ax[1, 1].axvline(en / 10, color=colors[2])
 
-ax[1, 1].plot((np.arange(len(rb_86)) + 0.5)[:-1], np.asarray(rb_86_simulation), color=colors[1])
+ax[1, 1].plot((np.arange(len(rb_86)) + 0.5), np.asarray(rb_86_simulation), color=colors[1])
 ax[1, 1].set_yscale('log')
 ax[1, 1].set_ylim(bottom=10)
 
@@ -98,7 +97,7 @@ energies = np.load(energy_path + "Al-28-energies.npy")
 for en in energies:
     ax[0, 0].axvline(en / 10, color=colors[2])
 
-ax[0, 0].plot((np.arange(len(al_28)) + 0.5)[:-1], np.asarray(al_28_simulation), color=colors[1], label="Simulation")
+ax[0, 0].plot((np.arange(len(al_28)) + 0.5), np.asarray(al_28_simulation), color=colors[1], label="Simulation")
 ax[0, 0].set_ylabel("Counts")
 ax[0, 0].set_yscale('log')
 ax[0, 0].legend(loc="lower left")
@@ -112,7 +111,7 @@ ax[2, 1].grid()
 #ba_140_simulation = np.load(file_path)
 ba_140_simulation = np.load(loadpath + "Ba-140-broaded.npy")
 ba_140_simulation = ba_140_simulation / np.linalg.norm(ba_140_simulation, 1) * np.sum(np.asarray(ba_140[1:]))
-intensities = np.load(energy_path + "Ba-140-intensities.npy")
+intensities = np.load(intensity_path + "Ba-140-intensities.npy")
 energies = np.load(energy_path + "Ba-140-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -139,7 +138,7 @@ co_60_simulation *= (source_particles / particles_simulation * detector_efficien
 first_peak = 0
 second_peak = 0
 
-intensities = np.load(energy_path + "Co-60-intensities.npy")
+intensities = np.load(intensity_path + "Co-60-intensities.npy")
 energies = np.load(energy_path + "Co-60-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -153,7 +152,7 @@ for ind, en in enumerate(energies):
 #ax[0, 2].axvline(2*first_peak, color=colors[3], linewidth=1, ls=":")
 #ax[0, 2].axvline(2*second_peak, color=colors[3], linewidth=1, ls=":")
 ax[0, 2].axvline(first_peak+second_peak, color=colors[3], linewidth=1, ls=":")
-ax[0, 2].plot((np.arange(len(co_60)) + 0.5)[1:], np.asarray(co_60_simulation) * 2, color=colors[1])
+ax[0, 2].plot((np.arange(len(co_60)) + 0.5), np.asarray(co_60_simulation) * 2, color=colors[1])
 ax[0, 2].set_yscale('log')
 
 ################################################################################
@@ -169,8 +168,13 @@ detector_efficiency = 0.015 # read out heath p. 90
 particles_simulation = 1
 zn_65_simulation *= (source_particles / particles_simulation * detector_efficiency)
 
-intensities = np.load(energy_path + "Zn-65-intensities.npy")
+intensities = np.load(intensity_path + "Zn-65-intensities.npy")
+intensities = (1-2*0.0142) * intensities / np.sum(intensities)             
+intensities = list(intensities)[:1] + [2*0.0142] + list(intensities)[1:]
+
 energies = np.load(energy_path + "Zn-65-energies.npy")
+energies = list(energies)[:1] + [511.0] + list(energies)[1:]
+
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
         ax[1, 0].axvline(en / 10, color=colors[2], linewidth=1, ls=":")
@@ -178,7 +182,7 @@ for ind, en in enumerate(energies):
         ax[1, 0].axvline(en / 10, color=colors[2])
 
 ax[1, 0].set_ylabel("Counts")
-ax[1, 0].plot((np.arange(len(zn_65)) + 0.5)[:-1], np.asarray(zn_65_simulation), color=colors[1])
+ax[1, 0].plot((np.arange(len(zn_65)) + 0.5), np.asarray(zn_65_simulation), color=colors[1])
 ax[1, 0].set_yscale('log')
 ax[1, 0].set_ylim(bottom=30)
 
@@ -194,7 +198,7 @@ y_88_simulation = np.load(loadpath + "Y-88-broaded.npy")
 #detector_efficiency = ?? # read out heath p. 90
 #y_88_simulation *= (source_particles / particles_simulation * detector_efficiency)
 
-intensities = np.load(energy_path + "Y-88-intensities.npy")
+intensities = np.load(intensity_path + "Y-88-intensities.npy")
 energies = np.load(energy_path + "Y-88-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -203,7 +207,7 @@ for ind, en in enumerate(energies):
         ax[1, 2].axvline(en / 10, color=colors[2])
 
 y_88_simulation = y_88_simulation / np.linalg.norm(y_88_simulation, 1) * np.sum(np.asarray(y_88[1:]))
-ax[1, 2].plot((np.arange(len(y_88)) + 0.5)[1:], np.asarray(y_88_simulation), color=colors[1])
+ax[1, 2].plot((np.arange(len(y_88)) + 0.5), np.asarray(y_88_simulation), color=colors[1])
 ax[1, 2].set_yscale('log')
 
 # ax[1, 2].text(310, 106000, r'\texttimes', style='normal', bbox=dict(facecolor= 'gray', alpha= 0.3, boxstyle='round,pad=0.2'))
@@ -211,14 +215,14 @@ ax[1, 2].set_yscale('log')
 ################################################################################
 print("cs137")
 ax[2, 0].title.set_text('Cs-137')
-ax[2, 0].plot(np.arange(len(cs_137))+0.5, np.asarray(cs_137), color=colors[0])
+ax[2, 0].plot(np.arange(len(cs_137))-0.5, np.asarray(cs_137), color=colors[0])
 ax[2, 0].grid()
 cs_137_simulation = np.load(loadpath + "Cs-137-broaded.npy")
 source_particles = 3.07 * 10**7 # from heath
 detector_efficiency = 0.02 # read out heath p. 90
 cs_137_simulation *= (source_particles / particles_simulation * detector_efficiency)
 
-intensities = np.load(energy_path + "Cs-137-intensities.npy")
+intensities = np.load(intensity_path + "Cs-137-intensities.npy")
 energies = np.load(energy_path + "Cs-137-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -235,14 +239,14 @@ ax[2, 0].set_ylim(bottom=100)
 ################################################################################
 print("mn54")
 ax[0, 1].title.set_text('Mn-54')
-ax[0, 1].plot(np.arange(len(mn_54)) + 0.5, np.asarray(mn_54), color=colors[0])
+ax[0, 1].plot(np.arange(len(mn_54)) - 0.5, np.asarray(mn_54), color=colors[0])
 ax[0, 1].grid()
 mn_54_simulation = np.load(loadpath + "Mn-54-broaded.npy")
 source_particles = 3.07 * 10**7 # from heath
 detector_efficiency = 0.02 # read out heath p. 90
 mn_54_simulation *= (source_particles / particles_simulation * detector_efficiency)
 
-intensities = np.load(energy_path + "Mn-54-intensities.npy")
+intensities = np.load(intensity_path + "Mn-54-intensities.npy")
 energies = np.load(energy_path + "Mn-54-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -250,7 +254,7 @@ for ind, en in enumerate(energies):
     else:
         ax[0, 1].axvline(en / 10, color=colors[2])
 
-ax[0, 1].plot((np.arange(len(mn_54)) + 0.5)[:-1], np.asarray(mn_54_simulation), color=colors[1])
+ax[0, 1].plot((np.arange(len(mn_54)) + 0.5), np.asarray(mn_54_simulation), color=colors[1])
 ax[0, 1].set_yscale('log')
 ax[0, 1].set_ylim(bottom=5)
 
@@ -264,7 +268,7 @@ au_198_simulation = np.load(loadpath + "Au-198-broaded.npy")
 #detector_efficiency = ?? # read out heath p. 90
 #au_198_simulation *= (source_particles / particles_simulation * detector_efficiency)
 
-intensities = np.load(energy_path + "Au-198-intensities.npy")
+intensities = np.load(intensity_path + "Au-198-intensities.npy")
 energies = np.load(energy_path + "Au-198-energies.npy")
 for ind, en in enumerate(energies):
     if intensities[ind] / np.sum(intensities) < 0.01:
@@ -273,7 +277,7 @@ for ind, en in enumerate(energies):
         ax[2, 2].axvline(en / 10, color=colors[2])
 
 au_198_simulation = au_198_simulation / np.linalg.norm(au_198_simulation, 1) * np.sum(np.asarray(au_198[1:]))
-ax[2, 2].plot((np.arange(len(au_198)) + 0.5)[:-1], np.asarray(au_198_simulation), color=colors[1])
+ax[2, 2].plot((np.arange(len(au_198)) + 0.5), np.asarray(au_198_simulation), color=colors[1])
 ax[2, 2].set_xlabel("Energy [MeV]")
 ax[2, 2].set_yscale('log')
 #ax[2, 2].text(115, 113000, r'\texttimes', style='normal') #, bbox=dict(facecolor= 'gray', alpha= 0.3, boxstyle='round,pad=0.2'))
@@ -308,5 +312,5 @@ ax[2,2].set_xticks([0, 50, 100])
 ax[2,2].set_xticklabels([0,0.5,1.0])
 
 
-plt.savefig(figures_path + 'experimental_all.pgf', bbox_inches='tight')
+plt.savefig('experimental_all.pgf', bbox_inches='tight')
 

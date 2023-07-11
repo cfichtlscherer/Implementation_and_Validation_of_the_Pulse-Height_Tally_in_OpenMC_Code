@@ -14,16 +14,16 @@ The folder *geant-time* and *openmc-time* contain the detector simulations. The 
 
 ### 2) Analytic Validation
 
-The file *results_openmc_multilayered.txt* contains the results of the OpenMC simulation in the simplified version. The script *multilayered_analytical_plot.py* produces Figure 4. The file *define_colors.py* contains the used colors defined in a python dictionary.
+The folder *openmc-modification* contains the files particle.cpp and physics.cpp for the simplified analytical model. The file *run.py* starts the 100 simulations and stores the resulting .npy files in *results*. The script *multilayered_analytical_plot.py* produces Figure 4 (*pgf_tworegions_new.pgf*). The file *define_colors.py* contains the used colors defined in a Python dictionary.
 
 ### 3) Software-based Validation
 
-Many incorrect simulations were performed for this validation step. We show here only the correct results used at the end. The script *plots_paper.py* creates Figure 6 and Figure 7 of the paper. 
-The folders *run-27*, *run-42*, *run-43*, and *run-44* contain the respective simulation results, input files, and log files, which contain further information about the simulations.
+Many incorrect simulations were performed for this validation step. We show here only the correct results used at the end. The script *plots_paper.py* creates Figure 6 (*cs-137.pgf*) and Figure 7 (*ks-tests.pgf*) of the paper. 
+The folders *run-27*, *run-42*, *run-43*, and *run-44* contain the respective simulation results, input files, and log files, which contain further information about the simulations. The folder *big_run-6-openmc* contains all OpenMC simulation results.
 
 ### 4) Experimental Validation
 
-The script *fit_detector_resolution.py* fits the detector resolution of the results in Heath. It creates Figure 9. The file *heath_experimental_spectra.py* contains the measurement results, read out by hand in form of lists. The folder *isotope_emissions* contains the intensities, the energies and the used bins for the nine analyzed isotopes. The simulated energies and intensities are listed below (energies in keV, intensities in fractions):
+The script *fit_detector_resolution.py* fits the detector resolution of the results in Heath. It creates Figure 9 (*detector_resolution.pgf*). The file *heath_experimental_spectra.py* contains the measurement results, read out by hand in form of lists. The folder *isotope_emissions* contains the intensities, the energies and the used bins for the nine analyzed isotopes. The simulated energies and intensities are listed below (energies in keV, intensities in fractions):
 
 **Al-28** - [1778.987], [1.]
 
@@ -45,11 +45,9 @@ The script *fit_detector_resolution.py* fits the detector resolution of the resu
 
 The script *experimental_setup.py* runs the simulation for the eight isotopes: Al-28, Mn-54, Co-60, Rb-86, Y-88, Cs-137, Ba-140, Au-198.  The script *broadening_spectrum*, broads the simulated PHT results. 
 
-The entire routine for simulation of Zn-65 with the additional 511keV peak is carried out in the folder *Zn-65-511peak*.
-
 The results of these simulations can be found in *experimental_broadened_spectra*.
 
-The file *plot_experimental.py* creates Figure 10.
+The file *plot_experimental.py* creates Figure 10 (*experimental_all.pgf*).
 
 The file *define_colors.py* contains the used colors for the plotting in form of a dictionary.
 

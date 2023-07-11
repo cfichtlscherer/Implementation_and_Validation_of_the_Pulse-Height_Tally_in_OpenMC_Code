@@ -1,8 +1,8 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <settings>
   <run_mode>fixed source</run_mode>
-  <particles>10000000</particles>
+  <particles>1000000</particles>
   <batches>1</batches>
-  <source library="custom_source/build/libsource.so" parameters="radius=2.84,energy=661700.0" strength="1.0" />
+  <source library="custom_source/build/libsource.so" parameters="radius=2.84,energy=661700.0" strength="1.0"/>
   <photon_transport>true</photon_transport>
 </settings>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<geometry>
+  <cell id="1" material="1182" region="-2361 -2366 2365" universe="296"/>
+  <cell id="2" material="1183" region="2361 -2362 -2366 2365" universe="296"/>
+  <cell id="3" material="1181" region="2362 -2363 -2367 2364" universe="296"/>
+  <cell id="4" material="1181" region="-2362 -2365 2364" universe="296"/>
+  <cell id="5" material="1181" region="-2362 -2367 2366" universe="296"/>
+  <cell id="6" material="1184" region="-2368 ~(-2363 -2367 2364)" universe="296"/>
+  <surface coeffs="0.0 0.0 2.54" id="2361" type="z-cylinder"/>
+  <surface coeffs="0.0 0.0 2.7" id="2362" type="z-cylinder"/>
+  <surface coeffs="0.0 0.0 2.84" id="2363" type="z-cylinder"/>
+  <surface coeffs="0.0" id="2364" type="z-plane"/>
+  <surface coeffs="0.1" id="2365" type="z-plane"/>
+  <surface coeffs="5.18" id="2366" type="z-plane"/>
+  <surface coeffs="7.18" id="2367" type="z-plane"/>
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 10" id="2368" type="sphere"/>
+</geometry>

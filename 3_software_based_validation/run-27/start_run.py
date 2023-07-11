@@ -163,7 +163,7 @@ ENDFB_VI_8 = ".84p"    # seems to be the right choice, from 2012
 parameter_dic = {"cross_sections_openmc": endfb_71_lanl,
                  "cross_sections_mcnp": ENDFB_VI_8,
                  "energy": 0.6617 * 1e6,
-                 "number_particles": 1e10,
+                 "number_particles": 1e8,
                  "density": 3.667,
                  "radius": 2.84, 
                  "comment": "cs many particles"}
@@ -178,6 +178,4 @@ print(parameter_dic["bins"][1860:1864])
 print("1871:1875")
 print(parameter_dic["bins"][1871:1875])
 
-#start_run(parameter_dic)
-#start_big_run(parameter_dic)
-#start_big_openmc_run(parameter_dic, "big_run-4-openmc")
+run_openmc(parameter_dic)

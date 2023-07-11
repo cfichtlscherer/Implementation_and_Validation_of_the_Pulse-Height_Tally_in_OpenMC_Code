@@ -1,0 +1,86 @@
+[INFO] Module HDF5/1.14.0-serial loaded.
+[INFO] Module GCC/11.3.0 loaded.
+[INFO] Module Python/3.9.6 loaded.
+
+The following have been reloaded with a version change:
+  1) binutils/2.38 => binutils/2.37     2) zlib/1.2.12 => zlib/1.2.11
+
+/rwthfs/rz/cluster/home/gf737457/openmc/openmc/source.py:388: FutureWarning: This class is deprecated in favor of 'IndependentSource'
+  warnings.warn("This class is deprecated in favor of 'IndependentSource'", FutureWarning)
+                                %%%%%%%%%%%%%%%
+                           %%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                    %%%%%%%%%%%%%%%%%%%%%%%%
+                                     %%%%%%%%%%%%%%%%%%%%%%%%
+                 ###############      %%%%%%%%%%%%%%%%%%%%%%%%
+                ##################     %%%%%%%%%%%%%%%%%%%%%%%
+                ###################     %%%%%%%%%%%%%%%%%%%%%%%
+                ####################     %%%%%%%%%%%%%%%%%%%%%%
+                #####################     %%%%%%%%%%%%%%%%%%%%%
+                ######################     %%%%%%%%%%%%%%%%%%%%
+                #######################     %%%%%%%%%%%%%%%%%%
+                 #######################     %%%%%%%%%%%%%%%%%
+                 ######################     %%%%%%%%%%%%%%%%%
+                  ####################     %%%%%%%%%%%%%%%%%
+                    #################     %%%%%%%%%%%%%%%%%
+                     ###############     %%%%%%%%%%%%%%%%
+                       ############     %%%%%%%%%%%%%%%
+                          ########     %%%%%%%%%%%%%%
+                                      %%%%%%%%%%%
+
+                 | The OpenMC Monte Carlo Code
+       Copyright | 2011-2023 MIT, UChicago Argonne LLC, and contributors
+         License | https://docs.openmc.org/en/latest/license.html
+         Version | 0.13.4-dev
+        Git SHA1 | 3e1a5a552aaa639b7fb08657420015ab20de6fce
+       Date/Time | 2023-07-10 11:06:08
+  OpenMP Threads | 8
+
+ Reading settings XML file...
+ Reading cross sections XML file...
+ Reading materials XML file...
+ Reading geometry XML file...
+ Reading Al27 from /home/gf737457/lanl_xsections/mcnp_endfb71/Al27.h5
+ Reading Al from /home/gf737457/lanl_xsections/mcnp_endfb71/photon/Al.h5 
+ Reading Na23 from /home/gf737457/lanl_xsections/mcnp_endfb71/Na23.h5
+ Reading Na from /home/gf737457/lanl_xsections/mcnp_endfb71/photon/Na.h5 
+ Reading I127 from /home/gf737457/lanl_xsections/mcnp_endfb71/I127.h5
+ Reading I from /home/gf737457/lanl_xsections/mcnp_endfb71/photon/I.h5 
+ Reading O16 from /home/gf737457/lanl_xsections/mcnp_endfb71/O16.h5
+ Reading O from /home/gf737457/lanl_xsections/mcnp_endfb71/photon/O.h5 
+ Reading N14 from /home/gf737457/lanl_xsections/mcnp_endfb71/N14.h5
+ Reading N from /home/gf737457/lanl_xsections/mcnp_endfb71/photon/N.h5 
+ Minimum neutron data temperature: 294 K
+ Maximum neutron data temperature: 294 K
+ Reading tallies XML file...
+ Preparing distributed cell instances...
+ Reading plot XML file...
+ Writing summary.h5 file...
+ Maximum neutron transport energy: 20000000 eV for Na23
+
+ ===============>     FIXED SOURCE TRANSPORT SIMULATION     <===============
+
+ Simulating batch 1
+ Creating state point statepoint.1.h5...
+
+ =======================>     TIMING STATISTICS     <=======================
+
+ Total time for initialization     = 4.5802e+00 seconds
+   Reading cross sections          = 3.7736e+00 seconds
+ Total time in simulation          = 2.6098e+04 seconds
+   Time in transport only          = 2.6098e+04 seconds
+   Time in active batches          = 2.6098e+04 seconds
+   Time accumulating tallies       = 1.7314e-04 seconds
+   Time writing statepoints        = 2.3404e-02 seconds
+ Total time for finalization       = 9.9455e-03 seconds
+ Total time elapsed                = 2.6103e+04 seconds
+ Calculation Rate (active)         = 383171 particles/second
+
+ ============================>     RESULTS     <============================
+
+ WARNING: Could not compute uncertainties -- only one active batch simulated!
+ Leakage Fraction           = 0.00000
+

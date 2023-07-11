@@ -61,15 +61,16 @@ int main(int argc,char** argv) {
   G4Random::setTheEngine(new CLHEP::RanecuEngine);
 
   //construct the default run manager
-  #ifdef G4MULTITHREADED
-    G4MTRunManager* runManager = new G4MTRunManager;
-    G4int nThreads = G4Threading::G4GetNumberOfCores();
-    if (argc==3) nThreads = G4UIcommand::ConvertToInt(argv[2]);
-    runManager->SetNumberOfThreads(nThreads);
-  #else
-    G4VSteppingVerbose::SetInstance(new SteppingVerbose);
-    G4RunManager* runManager = new G4RunManager;
-  #endif
+#ifdef G4MULTITHREADED
+  G4MTRunManager* runManager = new G4MTRunManager;
+  G4int nThreads = 1; // forcing it to use one core
+  if (argc==3) nThreads = G4UIcommand::ConvertToInt(argv[2]); // you can remove this line if you never want to use more than one thread
+  runManager->SetNumberOfThreads(nThreads);
+#else
+  G4VSteppingVerbose::SetInstance(new SteppingVerbose);
+  G4RunManager* runManager = new G4RunManager;
+#endif
+
 
   //set mandatory initialization classes
   runManager->SetUserInitialization(new DetectorConstruction);
@@ -104,8 +105,8 @@ int main(int argc,char** argv) {
   }
 
   //job termination
-  delete visManager;
-  delete runManager;
+  //delete visManager;
+  //delete runManager;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -180,4 +180,4 @@ def evaluate_run(run_name):
     generate_spectra_sub_plot_after_three(run_name)
     os.system("cp evaluate_runs.py " + run_name)
 
-evaluate_run("run-27")
+evaluate_run("../run-27")

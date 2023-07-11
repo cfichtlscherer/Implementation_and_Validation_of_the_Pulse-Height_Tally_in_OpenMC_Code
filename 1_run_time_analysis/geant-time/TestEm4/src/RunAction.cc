@@ -46,6 +46,7 @@ RunAction::RunAction()
  : G4UserRunAction()
 {
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+  analysisManager->SetDefaultFileType("root");
   analysisManager->SetVerboseLevel(1);
   analysisManager->SetFirstHistoId(1);
 
@@ -69,12 +70,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // show Rndm status
   if (isMaster) G4Random::showEngineStatus();
 
-  // global::global_tally_pht.resize(10, 0.0); // to number of particles instead of 10
-   // Get analysis manager
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-
-  // Open an output file
-  //
   G4String fileName = "testem4";
   analysisManager->OpenFile(fileName);
 }

@@ -15,7 +15,7 @@ import os as os
 
 from heath_experimental_spectra import *
 
-def run_experimental_spectrum(nuc, energy_list, intensity_list, bins, seed):
+def run_experimental_spectrum(nuc, energy_list, intensity_list, bins):
     """ runs an experimental spectrum"""
 
     ##################################### Materials ####################################################
@@ -51,7 +51,7 @@ def run_experimental_spectrum(nuc, energy_list, intensity_list, bins, seed):
     mats = openmc.Materials([alu, sodium_iodide, oxide, iron, air])
     # cross sections ENDF/B-VII.1 from https://openmc.org/lanl-data-libraries/
     # photons eprdata14 library
-    mats.cross_sections = '/home/cpf/xsections/endfb71/endfb71_hdf5/cross_sections.xml'
+    mats.cross_sections = '/home/cpf/all_openmc_xsections/lanl_based/mcnp_endfb71/cross_sections.xml'
     mats.export_to_xml()
 
     ##################################### Geometry #####################################################
@@ -114,9 +114,9 @@ def run_experimental_spectrum(nuc, energy_list, intensity_list, bins, seed):
 
     settings = openmc.Settings()
     settings.temperature = {'method': 'interpolation'}
-    settings.particles = 10**8
+    settings.particles = 10**9
     settings.batches = 1
-    settings.seed = seed
+    settings.seed = 1
     settings.photon_transport = True
     settings.source = source
     settings.run_mode = 'fixed source'
@@ -133,22 +133,33 @@ def run_experimental_spectrum(nuc, energy_list, intensity_list, bins, seed):
     tallies.append(tally)
     tallies.export_to_xml()
 
-    openmc.run(openmc_exec='/home/cpf/openmc/build/bin/openmc')
+    openmc.run(openmc_exec='/home/cpf/Desktop/openmc/build/bin/openmc')
 
     sp = openmc.StatePoint('statepoint.1.h5')
     tally = sp.get_tally(name="pht tally")
     openmc_values = tally.get_values(scores=['pulse-height']).flatten()
-    np.save("simulation_results/" + nuc + "-" + str(seed), openmc_values)
+    np.save("simulation_results/" + nuc, openmc_values)
 
 
 
-nuc_names = ["Al-28", "Mn-54", "Co-60", "Rb-86", "Y-88", "Cs-137", "Ba-140", "Au-198"]
+nuc_names = ["Al-28", "Mn-54", "Co-60", "Rb-86", "Y-88", "Cs-137", "Ba-140", "Au-198", "Zn-65"]
 
-for seed in range(1, 101):
-    for nuc in nuc_names:
-        if nuc + "-" + str(seed) + ".npy" not in os.listdir("simulation_results/"):
-            energies = np.load(nuc + "-energies.npy") * 10**3 # output of pyne is in keV
-            intensities = np.load(nuc + "-intensities.npy")
-            bins = np.load("pht_bins_" + nuc + ".npy")
-            run_experimental_spectrum(nuc, energies, intensities, bins, seed)
+for nuc in nuc_names:
+    if nuc + ".npy" not in os.listdir("simulation_results"):
+        if nuc == "Zn-65":
+            energy_array = np.load(nuc + "-energies.npy") * 10**3 # output of pyne is in keV
+            intensity_array = np.load(nuc + "-intensities.npy")
+            energy_list = list(energy_array)[:1] + [511000.0] + list(energy_array)[1:]
+
+            # 1.42% for beta+ decay, factor 2 since there are two photons asociated for every beta+
+            intensity_array = (1-2*0.0142) * intensity_array / np.sum(intensity_array)             
+            intensity_list = list(intensity_array)[:1] + [2*0.0142] + list(intensity_array)[1:]
+
+            energies, intensities = energy_list, intensity_list
+        else:
+            energies = np.load("isotope_emissions/energies/" + nuc + "-energies.npy") * 10**3 # output of pyne is in keV
+            intensities = np.load("isotope_emissions/intensities/" + nuc + "-intensities.npy")
+        
+        bins = np.load("isotope_emissions/bins/pht_bins_" + nuc + ".npy")
+        run_experimental_spectrum(nuc, energies, intensities, bins)
 
