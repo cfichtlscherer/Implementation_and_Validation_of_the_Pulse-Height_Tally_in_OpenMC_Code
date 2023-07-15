@@ -144,15 +144,15 @@ def generate_ks_test_plot():
     ks_test_results = np.asarray([0,0,0,0] + list(np.load("run-43/all_ks_test_results.npy")))
     ks_test_results_problems = [ks_test_results[i-1] for i in problem_indices]
     ks_test_results_new = np.load("run-44/all_ks_test_results.npy")
+    print(ks_test_results_new)
     ks_tests_cleaned = ks_test_results.copy()
     for index, value in enumerate(problem_indices):
         ks_tests_cleaned[value - 1] = ks_test_results_new[index] 
-    
+
     cutted_beginning = 4
     viewed_range = range(1,301)[cutted_beginning:]
 
     plt.plot(range(301), 301 * [0.03], color=colors[2], ls="--", marker="")
-    #plt.text(260, 0.031, "$d_{0.05} = 0.03$")
     plt.text(4, 0.0315, "$d_{0.05} = 0.03$")
     plt.plot(problem_indices, ks_test_results_problems, marker="x", ls="", color=colors[1], alpha=1.0, label="Original test results")
     plt.plot(problem_indices, ks_test_results[problem_indices], marker="x", ls="", color=colors[0], alpha=1.0, label="Shifted test results")
@@ -169,7 +169,7 @@ def generate_ks_test_plot():
 
     plt.text(50, 0.015, "Cs-137 spectrum")
     plt.plot([62.5, 68], [0.0015, 0.014], color="black", marker="", lw=0.5)
-
+    #plt.show()
     plt.savefig("ks_tests.pgf", bbox_inches = 'tight')
 
 

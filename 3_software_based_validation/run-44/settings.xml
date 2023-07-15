@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <run_mode>fixed source</run_mode>
+  <particles>100000000</particles>
+  <batches>1</batches>
+  <source particle="photon" strength="1.0">
+    <space origin="0.0 0.0 -1.0" type="cylindrical">
+      <r parameters="0.0 2.84 1" type="powerlaw"/>
+      <phi parameters="0.0 6.283185307179586" type="uniform"/>
+      <z parameters="0.0 0.0" type="uniform"/>
+    </space>
+    <angle reference_uvw="0.0 0.0 1.0" type="monodirectional"/>
+    <energy type="discrete">
+      <parameters>1450000.0 1.0</parameters>
+    </energy>
+  </source>
+  <photon_transport>true</photon_transport>
+</settings>

@@ -201,6 +201,6 @@ parameter_dic = {"cross_sections_openmc": endfb_71_lanl,
 bins_middle = np.linspace(parameter_dic["energy"] / 2048, parameter_dic["energy"], 2048)
 parameter_dic["bins"] = [0, 0.001, 1] + list(bins_middle + 0.5 * (bins_middle[2] - bins_middle[1])) + [20e6]
 
-#start_run_33(parameter_dic, "run-44")
-start_big_run(parameter_dic)
+start_run_33(parameter_dic, "run-44")
+#start_big_run(parameter_dic)
 #start_big_openmc_run(parameter_dic, "big_run-5-openmc")

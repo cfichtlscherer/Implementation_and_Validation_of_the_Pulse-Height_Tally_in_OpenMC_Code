@@ -60,7 +60,6 @@ energy_path = "isotope_emissions/energies/"
 intensity_path = "isotope_emissions/intensities/"
 nuc_names = ["Na-24", "Al-28", "S-37", "Co-60", "Zn-65", "Y-88", "Cs-137", "Ce-139", "Au-198"]
 
-#particles_simulation = 10 * 10**7 *0.038
 particles_simulation = 1
 
 ################################################################################
